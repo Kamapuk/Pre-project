@@ -1,0 +1,29 @@
+package com.example.springbootdemo.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/users")
+public class Lastquest {
+    private final List<User2> users = new ArrayList<>();
+
+    public Lastquest() {
+        users.add(new User2(1, "Dima", "dvorovoyd1@gmail.com"));
+        users.add(new User2(2, "Anna", "anna@example.com"));
+    }
+
+
+    @GetMapping
+    public List<User2> getAllUsers(){
+        return users;
+    }
+
+    @PostMapping
+    public User2 addUser(@RequestBody User2 newUser){
+        users.add(newUser);
+        return newUser;
+    }
+}
